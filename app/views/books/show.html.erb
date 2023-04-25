@@ -35,8 +35,28 @@
               <% end %>
             </td>
           <% end %>
+            <td>
+              コメント数: <%= @book.book_comments.count %>
+            </td>
         </tr>
       </table>
+      <ul class="list-unstyled">
+        <% @book.book_comments.each do |book_comment| %>
+        <li class="media">
+          <%= link_to user_path(@user) do %>
+            <%= image_tag book_comment.user.get_profile_image, size: '70x70' %></br>
+            <%= book_comment.user.name %>
+          <% end %>
+          <p class="media-body mt-4 mx-2"><%= book_comment.comment %></p>
+        </li>
+        <% end %>
+      </ul>
+      <div>
+        <%= form_with model: [@book, @book_comment] do |f| %>
+          <%= f.text_area :comment %>
+          <%= f.submit "送信" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
