@@ -8,11 +8,11 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
 
-  has_many :active_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
-  has_many :followings, through: :active_relationships, source: :passive_follow
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "active_follow_id", dependent: :destroy
+  has_many :active_follows, through: :active_relationships, source: :passive_follow
 
-  has_many :passive_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :followers, through: :passive_relationships, source: :active_follow
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "passive_follow_id", dependent: :destroy
+  has_many :passive_follows, through: :passive_relationships, source: :active_follow
 
   has_one_attached :profile_image
 
@@ -23,4 +23,5 @@ class User < ApplicationRecord
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
+
 end

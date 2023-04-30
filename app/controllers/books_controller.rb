@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+
   before_action :is_matching_login_user, only: [:edit, :update]
 
   def show
@@ -55,4 +56,5 @@ class BooksController < ApplicationController
       redirect_to books_path
     end
   end
+
 end

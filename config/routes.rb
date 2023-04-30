@@ -11,8 +11,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
-    get "/relationship/:user_id/active_follows" => "relationships#active_follows", as: "user_followings"
-    get "/relationship/:user_id/passive_follows" => "relationships#passive_follows", as: "user_followers"
+    get "/relationship/:user_id/active_follows" =>
+          "relationships#active_follow", as: "user_active_follows"
+    get "/relationship/:user_id/passive_follows" =>
+          "relationships#passive_follow", as: "user_passive_follows"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
