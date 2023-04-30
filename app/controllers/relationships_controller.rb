@@ -3,10 +3,6 @@ class RelationshipsController < ApplicationController
   def create
     user = User.find(params[:user_id])
     follow = current_user.active_relationships.new(passive_follow_id: user.id)
-    # relationship = Relationship.new
-    # relationship.active_follow_id = current_user.id
-    # relationship.passive_follow_id = user.id
-    # relationship.save
     follow.save
     redirect_to request.referer
   end
