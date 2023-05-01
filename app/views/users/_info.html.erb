@@ -11,7 +11,7 @@
   <tr>
     <th>follows</th>
     <th>
-      <%= link_to user_user_active_follows_path(user.id) do %>
+      <%= link_to user_active_follows_path(user.id) do %>
         <%= user.active_follows.count %>
       <% end %>
     </th>
@@ -19,7 +19,7 @@
   <tr>
     <th>followers</th>
     <th>
-      <%= link_to user_user_passive_follows_path(user.id) do %>
+      <%= link_to user_passive_follows_path(user.id) do %>
         <%= user.passive_follows.count %>
       <% end %>
     </th>
