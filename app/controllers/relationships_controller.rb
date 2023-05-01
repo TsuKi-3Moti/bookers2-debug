@@ -14,10 +14,14 @@ class RelationshipsController < ApplicationController
     redirect_to request.referer
   end
 
-  def active_follows
+  def active_follow
+    @user = User.find(params[:user_id])
+    @users = @user.active_follows
   end
 
-  def passive_follows
+  def passive_follow
+    @user = User.find(params[:user_id])
+    @users = @user.passive_follows
   end
 
 end
