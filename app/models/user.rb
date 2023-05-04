@@ -28,4 +28,16 @@ class User < ApplicationRecord
     passive_relationships.find_by(active_follow_id: user.id).present?
   end
 
+  def self.search_for(search_word, method)
+    if method == "perfect"
+      User.where(name: search_word)
+    elsif method == "forward"
+      User.where("name LIKE ?", search_word + "%")
+    elsif method == "backward"
+      User.where("name LIKE ?", "%" + search_word)
+    else
+      User.where("name LIKE ?", "%" + search_word + "%")
+    end
+  end
+
 end

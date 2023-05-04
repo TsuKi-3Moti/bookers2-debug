@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get "home/about" => "homes#about"
 
-  get "seaches/search" => "searches#search", as: "seaches"
+  get "searches/search" => "searches#search", as: "search"
 
   resources :books do
     resource :favorites, only: [:create, :destroy]
