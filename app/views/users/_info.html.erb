@@ -11,37 +11,23 @@
   <tr>
     <th>follows</th>
     <th>
-      <%= link_to user_active_follows_path(user.id) do %>
-        <%= user.active_follows.count %>
-      <% end %>
+      <%= link_to user.active_follows.count, user_active_follows_path(user) %>
     </th>
   </tr>
   <tr>
     <th>followers</th>
     <th>
-      <%= link_to user_passive_follows_path(user.id) do %>
-        <%= user.passive_follows.count %>
-      <% end %>
+      <%= link_to user.passive_follows.count, user_passive_follows_path(user) %>
     </th>
   </tr>
 </table>
 
 <div class='row'>
-<% if current_user != user %>
-  <% if user.followed_by?(current_user) %>
-    <div>
-      <%= link_to "フォロー外す", user_relationships_path(user), method: :delete, class: "btn btn-success" %>
-    </div>
+  <% if current_user != user %>
+    <div><%= render "relationships/btn", user: user %></div>
   <% else %>
-    <div>
-      <%= link_to "フォローする", user_relationships_path(user), method: :post, class: "btn btn-success" %>
-    </div>
-  <% end %>
-<% end %>
-</div>
-
-<div class='row'>
-  <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
-    <i class="fas fa-user-cog"></i>
+    <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
   <% end %>
 </div>

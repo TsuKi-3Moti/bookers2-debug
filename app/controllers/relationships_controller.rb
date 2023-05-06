@@ -2,26 +2,24 @@ class RelationshipsController < ApplicationController
 
   def create
     user = User.find(params[:user_id])
-    follow = current_user.active_relationships.new(passive_follow_id: user.id)
-    follow.save
+    current_user.follow(user)
     redirect_to request.referer
   end
 
   def destroy
     user = User.find(params[:user_id])
-    follow = current_user.active_relationships.find_by(passive_follow_id: user.id)
-    follow.destroy
+    current_user.unfollow(user)
     redirect_to request.referer
   end
 
-  def active_follow
-    @user = User.find(params[:user_id])
-    @users = @user.active_follows
+  def active_follows
+    user = User.find(params[:user_id])
+    @users = user.active_follows
   end
 
-  def passive_follow
-    @user = User.find(params[:user_id])
-    @users = @user.passive_follows
+  def passive_follows
+    user = User.find(params[:user_id])
+    @users = user.passive_follows
   end
 
 end

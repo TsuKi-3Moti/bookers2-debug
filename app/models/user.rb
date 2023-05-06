@@ -24,8 +24,16 @@ class User < ApplicationRecord
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
 
-  def followed_by?(user)
-    passive_relationships.find_by(active_follow_id: user.id).present?
+  def follow(user)
+    active_relationships.create(passive_follow_id: user.id)
+  end
+
+  def unfollow(user)
+    active_relationships.find_by(passive_follow_id: user.id).destroy
+  end
+
+  def following?(user)
+    active_follows.include?(user)
   end
 
   def self.search_for(search_word, method)
