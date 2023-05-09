@@ -39,14 +39,9 @@
         </tr>
       </table>
       <!--コメントの一覧-->
-      <%= render "book_comments/book_comment-index", book: @book %>
+      <div class="book_comment_<%= @book.id %>"><%= render "book_comments/book_comment-index", book: @book %></div>
 
-      <div>
-        <%= form_with model: [@book, @book_comment] do |f| %>
-          <%= f.text_area :comment, class: "form-control" %>
-          <%= f.submit "送信" %>
-        <% end %>
-      </div>
+      <div id="book_comment_<%= @book.id %>"><%= render "book_comments/book_comment-form", book: @book, book_comment: @book_comment %></div>
 
     </div>
 
