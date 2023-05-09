@@ -7,7 +7,7 @@ class BooksController < ApplicationController
     @user = @book.user
     @newbook = Book.new
     @book_comment = BookComment.new
-    @favorite = Favorite.find(params[:id])
+    # @favorite = Favorite.find(params[:id])
   end
 
   def index
