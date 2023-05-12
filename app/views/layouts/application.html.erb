@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "app" %>
   </head>
 
-  <body>
+  <body style="background: #e5d6fb;">
 
     <%= render 'layouts/header' %>
 
-    <main>
+    <main class="min-vh-100">
       <p id="notice"><%= notice %></p>
       <%= yield %>
     </main>

@@ -1,0 +1,27 @@
+/*動きのきっかけの起点となるクラス名 はじめは非表示に*/
+.fadeInUpTrigger,
+.fadeInDownTrigger,
+.fadeInUpTriggerOnce{
+    opacity:0;
+}
+
+/*========= レイアウトのためのCSS ===============*/
+
+.wrapper{
+  overflow: hidden;
+}
+
+
+.flex{
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.box{
+  width: 220px;
+  padding: 20px;
+  margin:0 20px 20px 0;
+  background: #666;
+  color: #fff;
+  box-sizing:border-box;
+}
